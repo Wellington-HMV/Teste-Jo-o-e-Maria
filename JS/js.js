@@ -1,42 +1,119 @@
+var maiorNota;
+var nota1, nota2, qtdepera, qtdemaca, maca, pera;
 
-// var tabela = document.createElement("table");
-// document.getElementById("result").appendChild(newTable);
-// var tabela = document.createElement("table");
-// var cabecalho = document.createElement("thead");
-// var corpo = document.createElement("tbody");
+var aluno1 = { nome: "Joao", qtfruta: maca, nomeFruta: "Maçã", nota: nota1 }; //objeto
+var aluno2 = { nome: "Maria", qtfruta: pera, nomeFruta: "Pera", nota: nota2 };
+var bolsaProfessora = [];
 
-// tabela.appendChild(cabecalho);
-// tabela.appendChild(corpo);
-// document.getElementById("result").appendChild(table);
-
-//document.getElementById("tabela").appendChild(createTable)() 
-/*function resultados(dados){
-var dados = new Array();
-for (var i = 0; i < 30; i++) {
-    dados[i] = ['<tr>', i + 1, RandomF, "Maria", "Pera",'</tr>'];
-    //var tr = document.createElement("tr");
-    for (var j = 0; j < 30; j++) {
-    dados[j] = ['<tr>',j + 1, RandomF, "João", "Maçã",'</tr>'];
-        //var tr = document.createElement("tr");
+function MaiorNota(nota1, nota2) {
+    if (nota1 > nota2) {
+        maiorNota = aluno1.nome;
+    } else {
+        maiorNota = aluno2.nome;
     }
-}}
-//table.appendChild(thead);
-//table.appendChild(tbody);
-return dados;
-*/
+    return maiorNota;
+};
 
-function RandomF(frutas) {
-    return parseInt(Math.random()*5)
+/*function QuantidadeFrutas() {
+    do {
+        qtdepera = parseInt(Math.random() * 6);
+        qtdemaca = parseInt(Math.random() * 6);
+        if (qtdemaca + qtdepera <= 5) {
+            maca = qtdemaca;
+            pera = qtdepera;
+        }
+    } while (!qtdemaca + qtdepera <= 5);
+
+    return maca, pera;
+}*/
+function QuantidadeProfessora(maca, pera, melhor_aluno) {
+    if (melhor_aluno == aluno1.nome) {
+        for (var i = 0; i < 3; i++) {
+            if (maca > 0) {
+                bolsaProfessora.push(aluno1.nomeFruta);
+                maca--;
+            } else if (pera > 0) {
+                bolsaProfessora.push(aluno2.nomeFruta);
+                pera--;
+            } else {
+                bolsaProfessora.push("--");
+            }
+        }
+    }
+    if (melhor_aluno == aluno2.nome) {
+        for (var i = 0; i < 3; i++) {
+            if (pera > 0) {
+                bolsaProfessora.push(aluno2.nomeFruta);
+                pera--;
+            } else if (maca > 0) {
+                bolsaProfessora.push(aluno1.nomeFruta);
+                maca--;
+            } else {
+                bolsaProfessora.push ("--");
+            }
+        }
+    }
+    return bolsaProfessora;
+};
+var list = [];
+
+for (var i = 1; i <= 30; i++) {
+    nota1 = parseInt(Math.random() * 11);
+    nota2 = parseInt(Math.random() * 11);
+
+    do {                                        //testando a quantidade de frutas levadas
+        qtdepera = parseInt(Math.random() * 6);
+        qtdemaca = parseInt(Math.random() * 6);
+        if (qtdemaca + qtdepera <= 5) {
+            maca = qtdemaca;
+            pera = qtdepera;
+        }
+    } while (qtdemaca + qtdepera < 5);
+
+    aluno1.qtfruta = maca;
+    aluno2.qtfruta = pera;
+
+    var melhor_aluno = MaiorNota(nota1,nota2);
+
+    bolsaProfessora = QuantidadeProfessora(maca,pera, melhor_aluno);
+
+    /*var dados = [];
+
+    dados[0] = "dia\n"+i;
+    dados[1] = aluno1.qtfruta+"\nMaças";
+    dados[2] = aluno2.qtfruta+"\nPeras";
+    dados[3] = "\nmelhor aluno:"+melhor_aluno;
+    dados[4] = "Fruta1" + bolsaProfessora[0];
+    dados[5] = "Fruta2" + bolsaProfessora[1];*/
+
+    var objreturn={Dia: i, Macas: aluno1.qtfruta,Peras:aluno2.qtfruta,Maluno:melhor_aluno,
+        Fruta1: bolsaProfessora[0],Fruta2:bolsaProfessora[1],Fruta3:bolsaProfessora[2]};
+
+    list.push(objreturn);
+
+    //list.push(i+QuantidadeFrutas(qtdemaca)+QuantidadeFrutas(qtdepera)+MaiorNota()+bolsaProfessora[0]+bolsaProfessora[1]+bolsaProfessora[2]);
+};
+//document.write(list);
+
+/*$(document).ready(function () { //java requerimento
+    var lista = MaiorNota();*/
+
+var htmlTable = "<table>";
+htmlTable += "<tr>";
+htmlTable = "<th>tes</th>";
+htmlTable += "</tr>";
+
+for (var i = 0; i < list.length; i++) {
+    htmlTable += "<tr>";
+
+    //htmlTable += "<td>" + list[i] + "</td>";
+    //htmlTable += "<td>" + "teste" + "</td>";
+
+    htmlTable += "</tr>";
 }
+htmlTable += "</table>";
+document.write(htmlTable);
+    /*
 
-console.log(RandomF);
-
-
-// n = parseInt(Math.random() * 6);
-// tabela = '<table border=1>';
-// tabela += '<tr>';
-// tabela += '<td>Numero Sorteado: </td>';
-// tabela += '<td>' + n + '</td>';
-// tabela += '</tr>';
-// tabela += '</table><br><br>';
-// document.write(tabela);
+$(document).append(htmlTable);
+});*/

@@ -21,19 +21,34 @@ function NotaAluno() {
 	var melhoraluno;
 	var qntMaca, qntPera;
 	var sacola = new Array(fruta1, fruta2, fruta3);
+	/*
+		var lista = [];
+		var Aluno01 = { nome: "Joao", fruta: maca, nota: Nota1 };
+		lista.push( Aluno01 );
 
+		var listsRetorno;
+		
+		for (var i = 1; i <= 30; i++) {
+		consolge.log(lista[i]);
+		var qtdepera = lista[i].qtdPera;
+
+var novo = {  };
+listsRetorno.push({})
+		}
+	*/
+	var listaRetorno = [];
 	for (var i = 1; i <= 30; i++) {
 		var qtdepera = parseInt(Math.random() * limit);
 		var qtdemaca = parseInt(Math.random() * limit);
 		var maca = new Array(qtdemaca, "Macã");
 		var pera = new Array(qtdepera, "Pera");
 
-		if (pera + maca < 5) {
+		if (pera + maca <= 5) {
 			var Nota1 = parseInt(Math.random() * 11);
 			var Nota2 = parseInt(Math.random() * 11);
 
-			var Aluno0 = new Array("Joao", maca, Nota1);
-			var Aluno1 = new Array("Maria", pera, Nota2);
+			var Aluno0 = { nome: "Joao", fruta: maca, nota: Nota1 }; //objeto
+			var Aluno1 = { nome: "Maria", fruta: pera, nota: Nota2 };
 
 			if (Nota1 > Nota2) {
 				melhoraluno = Aluno0;
@@ -43,15 +58,20 @@ function NotaAluno() {
 
 			}
 			for (var j = 0; j < 3; j++) {
-				if (melhoraluno[1][1] > 0) {
-					sacola[j] = melhoraluno[1][1];
+				if (melhoraluno==Aluno0 && melhoraluno[1] > 0) 
+				{
+					sacola[j] = "Maçã";
 					qntMaca++;
 				}
 				else {
 					sacola[j] = "--";
 				}
 			}
-			var tabelaCompeticao = new Array("Dia: " + i, " Total Peras: " + pera, " Total Macas: " + maca, " Melhor Aluno: " + melhoraluno[0] + " " + sacola[0] + " " + sacola[2] + " " + sacola[2]);
+			var tabelaCompeticao = new Array("Dia: " + i, " Total Peras: " + pera, " Total Macas: " + maca, " Melhor Aluno: " + melhoraluno[0] + " " + sacola[0] + " " + sacola[2] + " " + sacola[2]); 
+			var objRetorno = { Dia: i+1, TotalPera: pera, TotalMacas: maca, MelhorAluno: };
+
+			
+			
 			qntMaca += qntMaca;
 			qntPera += qntPera;
 		}
@@ -61,6 +81,28 @@ function NotaAluno() {
 		console.log(tabelaCompeticao);
 	}
 }
+
+
+$(document).ready(function(){ //java requeriimento
+	var lista = NotaAluno();
+
+	var htmlTable = "<table>";
+	htmlTable = "<th>";
+	
+	for(var i =0; i< lista.length; i++){
+		htmlTable += "<tr>";
+		
+		htmlTable += "<td>" + lista[i].Dia + "</td>";
+		
+		htmlTable += "</tr>";
+	}
+	
+	$(document).append(htmlTable);
+})
+
+
+
+
 
 /*function TesteFrutas(maca,pera){
 if(maca<0 && sacola==0){
