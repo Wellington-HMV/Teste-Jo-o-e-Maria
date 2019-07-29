@@ -1,12 +1,8 @@
 body{
-    margin: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
 }
 table, th, td {
     border: 1px solid black;
-  }
-.cabecalho{
-    font-size: 15px;
-    padding: 10px 10px;
-    font-weight: bold;
-    margin: 5px auto;
 }
