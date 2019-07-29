@@ -30,26 +30,26 @@ function QuantidadeProfessora(maca, pera, melhor_aluno) {
     if (melhor_aluno == aluno1.nome) {
         for (var i = 0; i < 3; i++) {
             if (maca > 0) {
-                bolsaProfessora.push(aluno1.nomeFruta);
+                bolsaProfessora[i]=aluno1.nomeFruta;
                 maca--;
             } else if (pera > 0) {
-                bolsaProfessora.push(aluno2.nomeFruta);
+                bolsaProfessora[i]=aluno2.nomeFruta;
                 pera--;
             } else {
-                bolsaProfessora.push("--");
+                bolsaProfessora[i]="--";
             }
         }
     }
     if (melhor_aluno == aluno2.nome) {
         for (var i = 0; i < 3; i++) {
             if (pera > 0) {
-                bolsaProfessora.push(aluno2.nomeFruta);
+                bolsaProfessora[i]=aluno2.nomeFruta;
                 pera--;
             } else if (maca > 0) {
-                bolsaProfessora.push(aluno1.nomeFruta);
+                bolsaProfessora[i]=aluno1.nomeFruta;
                 maca--;
             } else {
-                bolsaProfessora.push ("--");
+                bolsaProfessora[i]="--";
             }
         }
     }
@@ -100,15 +100,19 @@ for (var i = 1; i <= 30; i++) {
 
 var htmlTable = "<table>";
 htmlTable += "<tr>";
-htmlTable = "<th>tes</th>";
+htmlTable += "<th>Dia</th>"+"<th>Peras</th>"+"<th>Maçãs</th>"+"<th>Melhor Aluno</th>"+"<th>Fruta 1</th>"+"<th>Fruta 2</th>"+"<th>Fruta 3</th>";
 htmlTable += "</tr>";
 
 for (var i = 0; i < list.length; i++) {
     htmlTable += "<tr>";
-
-    //htmlTable += "<td>" + list[i] + "</td>";
-    //htmlTable += "<td>" + "teste" + "</td>";
-
+    htmlTable += "<td>" + list[i].Dia+ "</td>";
+    htmlTable += "<td>" + list[i].Peras+ "</td>";
+    htmlTable += "<td>" + list[i].Macas+ "</td>";
+    htmlTable += "<td>" + list[i].Maluno+ "</td>";
+    htmlTable += "<td>" + list[i].Fruta1 + "</td>";
+    htmlTable += "<td>" + list[i].Fruta2 + "</td>";
+    htmlTable += "<td>" + list[i].Fruta3 + "</td>";
+    
     htmlTable += "</tr>";
 }
 htmlTable += "</table>";
